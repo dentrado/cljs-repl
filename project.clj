@@ -1,7 +1,8 @@
 (defproject coding "0.1.0-SNAPSHOT"
   :description "FIXME: write this!"
+  :plugins [[lein-cljsbuild "0.1.5"]]
   :dependencies [[org.clojure/clojure "1.3.0"]
-                 [noir "1.3.0-alpha7"]
+                 [noir "1.3.0-beta2"]
                  [congomongo "0.1.7"]
                  [org.clojure/clojurescript "0.0-971"]
                  [monet "0.1.0-SNAPSHOT"]

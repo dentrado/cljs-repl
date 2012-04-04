@@ -3,15 +3,13 @@
             [coding.models.box :as box]
             [noir.response :as resp])
   (:use [noir.core :only [defpage defpartial]]
-        [hiccup.page-helpers :only [link-to image]]
-        [hiccup.form-helpers :only [form-to hidden-field text-field text-area submit-button]]
+        [hiccup.element :only [link-to image]]
+        [hiccup.form :only [form-to hidden-field text-field text-area submit-button]]
         [hiccup.core :only [html]]))
 
 ;;*********************************************************
 ;; Partials
 ;;*********************************************************
-
-
 
 (defpartial editor [loc code]
   [:div#editor
@@ -26,11 +24,11 @@
 (defpartial interface []
   [:div#interface
    (editor "/submit" "")
-   [:canvas#canvas {:width 600 :height 650 :tabindex 1}]])
+   [:div#repl-out {:width 600 :height 650 :tabindex 1}]])
 
 (defpage "/" []
   (common/dark-layout
-    (interface)))
+   (interface)))
 
 (defpage [:post "/submit"] {:keys [codes]}
   (let [res (time 

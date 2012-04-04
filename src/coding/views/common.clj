@@ -1,6 +1,6 @@
 (ns coding.views.common
   (:use [noir.core :only [defpartial]]
-        [hiccup.page-helpers :only [include-css html5 include-js]]))
+        [hiccup.page :only [include-css html5 include-js]]))
 
 (defpartial layout [& content]
   (html5
