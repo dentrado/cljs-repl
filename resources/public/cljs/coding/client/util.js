@@ -8,9 +8,9 @@ return setTimeout(func, ms);
 */
 coding.client.util.log = (function() { 
 var log__delegate = function (v,text){
-var vs__458440 = (cljs.core.truth_(cljs.core.string_QMARK_.call(null,v))?cljs.core.apply.call(null,cljs.core.str,v,text):v);
+var vs__22786 = (cljs.core.truth_(cljs.core.string_QMARK_.call(null,v))?cljs.core.apply.call(null,cljs.core.str,v,text):v);
 
-return console.log(vs__458440);
+return console.log(vs__22786);
 };
 var log = function (v,var_args){
 var text = null;
@@ -20,9 +20,9 @@ if (goog.isDef(var_args)) {
 return log__delegate.call(this, v, text);
 };
 log.cljs$lang$maxFixedArity = 1;
-log.cljs$lang$applyTo = (function (arglist__458441){
-var v = cljs.core.first(arglist__458441);
-var text = cljs.core.rest(arglist__458441);
+log.cljs$lang$applyTo = (function (arglist__22787){
+var v = cljs.core.first(arglist__22787);
+var text = cljs.core.rest(arglist__22787);
 return log__delegate.call(this, v, text);
 });
 return log;

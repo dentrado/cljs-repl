@@ -1,29 +1,29 @@
 goog.provide('monet.core');
 goog.require('cljs.core');
-monet.core.animation_frame = (function (){var or__3548__auto____460462 = window.requestAnimationFrame;
+monet.core.animation_frame = (function (){var or__3548__auto____24919 = window.requestAnimationFrame;
 
-if(cljs.core.truth_(or__3548__auto____460462))
-{return or__3548__auto____460462;
+if(cljs.core.truth_(or__3548__auto____24919))
+{return or__3548__auto____24919;
 } else
-{var or__3548__auto____460463 = window.webkitRequestAnimationFrame;
+{var or__3548__auto____24920 = window.webkitRequestAnimationFrame;
 
-if(cljs.core.truth_(or__3548__auto____460463))
-{return or__3548__auto____460463;
+if(cljs.core.truth_(or__3548__auto____24920))
+{return or__3548__auto____24920;
 } else
-{var or__3548__auto____460464 = window.mozRequestAnimationFrame;
+{var or__3548__auto____24921 = window.mozRequestAnimationFrame;
 
-if(cljs.core.truth_(or__3548__auto____460464))
-{return or__3548__auto____460464;
+if(cljs.core.truth_(or__3548__auto____24921))
+{return or__3548__auto____24921;
 } else
-{var or__3548__auto____460465 = window.oRequestAnimationFrame;
+{var or__3548__auto____24922 = window.oRequestAnimationFrame;
 
-if(cljs.core.truth_(or__3548__auto____460465))
-{return or__3548__auto____460465;
+if(cljs.core.truth_(or__3548__auto____24922))
+{return or__3548__auto____24922;
 } else
-{var or__3548__auto____460466 = window.msRequestAnimationFrame;
+{var or__3548__auto____24923 = window.msRequestAnimationFrame;
 
-if(cljs.core.truth_(or__3548__auto____460466))
-{return or__3548__auto____460466;
+if(cljs.core.truth_(or__3548__auto____24923))
+{return or__3548__auto____24923;
 } else
 {return (function (callback){
 return setTimeout.call(null,callback,17);

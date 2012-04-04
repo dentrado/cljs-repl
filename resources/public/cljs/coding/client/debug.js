@@ -20,8 +20,8 @@ if (goog.isDef(var_args)) {
 return debug_log__delegate.call(this, vs);
 };
 debug_log.cljs$lang$maxFixedArity = 0;
-debug_log.cljs$lang$applyTo = (function (arglist__458350){
-var vs = cljs.core.seq( arglist__458350 );;
+debug_log.cljs$lang$applyTo = (function (arglist__22785){
+var vs = cljs.core.seq( arglist__22785 );;
 return debug_log__delegate.call(this, vs);
 });
 return debug_log;

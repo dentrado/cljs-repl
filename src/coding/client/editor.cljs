@@ -64,6 +64,7 @@
          (fn [v]
            (let [{:keys [moves result out exception]} (js->clj v :keywordize-keys true)]
              (when exception
+               (log "Exception")
                (transition state :error exception))
              (log (pr-str moves))
              (transition app :executing v))))))
@@ -115,78 +116,7 @@
   (in (fn []
         (set-mode "text/x-clojure")
         (set-submit-url clj-submit-url)
-        (set-val "
-;; Click the right pane to focus the game:
-;;   - Arrow keys move you left and right
-;;   - Space makes you jump
-;;   - Clicking the canvas will place a block
-;;   - s pauses the game and show you a history of what you did.
-;; change how the game works, see how it affects the history :)
-
-(defn gravity [{:keys [vy y] :as me}]
-  (let [g 0.5
-        vy (or vy 0)
-        neue-vy (+ vy g)
-        dir (if (< neue-vy 0) :up :down)
-        moved (update-in me [:y] + neue-vy)]
-    (if-let [block (colliding? moved)]
-      (let [block-edge (if (= dir :up)
-                          (+ (:y block) (:h block) (:r me))
-                          (- (:y block) (:r me)))]
-        (assoc me :y block-edge
-                :jumping (= dir :up)
-                :vy 0))
-      (-> moved
-          (assoc :vy neue-vy)))))
-
-(defn jump [me]
-  (let [speed -10]
-    (if (and (input? :space)
-              (and (not (:jumping me)) (zero? (:vy me))))
-      (assoc me :vy speed
-              :jumping true)
-      me)))
-
-(defn move [me]
-  (let [speed 5
-        vx (cond
-             (input? :left) (- speed)
-             (input? :right) speed
-             :else 0)
-        moved (update-in me [:x] + vx)]
-    (if (zero? vx) 
-      me
-      (if-let [block (colliding? moved)]
-        (let [block-edge (if (< vx 0)
-                           (+ (:x block) (:w block) (:r me))
-                           (- (:x block) (:r me)))]
-
-          (assoc me :x block-edge))
-        moved))))
-
-(defn reset [me]
-  (if (> (:y me) 650)
-    (-> me
-        (assoc :x 30)
-        (assoc :y 30)
-        (assoc :vy 0))
-    me))
-
-(defn update-player [me]
-  (-> me
-      (gravity)
-      (move)
-      (jump)
-      (reset)
-      ))
-
-(defn draw-player [ctx me]
-  (-> ctx
-      (canvas/fill-style \"#449\")
-      (canvas/stroke-style \"#68d\")
-      (canvas/stroke-width 2)
-      (canvas/circle me)
-      (canvas/stroke)))")
+        (set-val ";; Press Ctrl-Enter or Cmd-Enter to evaluate an expression")
         (submit-code))))
 
 (deftrans state :clean []
@@ -205,6 +135,7 @@
 
 (transition state :set-language :clojure)
 
-(.setOption editor "onChange"
-            (fn [ed delta]
-              (submit-code))) 
+(comment
+  (.setOption editor "onChange"
+              (fn [ed delta]
+                (submit-code)))) 
