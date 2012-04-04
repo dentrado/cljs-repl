@@ -11,12 +11,14 @@
   (binding [comp/*cljs-ns* 'coding.client.main]
     (let [form (binding [*ns* (create-ns comp/*cljs-ns*)] 
                  (read (->form f)))
-          env {:context :statement :locals {}} 
+          env {:context :expr :locals {}} 
           env (assoc env :ns (@comp/namespaces comp/*cljs-ns*))
-          ast (comp/analyze env form)
-          js (comp/emits ast)
           wrap-js (comp/emits (binding [comp/*cljs-warn-on-undeclared* false]
                                 (comp/analyze env form)))]
+      (println "DEBUG:")
+      (println (str f))
+      (println (str form))
+     ; (println (str wrap-js))
       wrap-js)))
 
 (time (println "DOING: " (->cljs "
@@ -43,5 +45,5 @@
         [waltz.state :only [add-state set-state unset-state in? transition 
                                     add-transition
                                     state-machine transition-by-url]]
-        [jayq.core :only [map->js]]))
+        [jayq.util :only [map->js]]))
                                  "))) 
