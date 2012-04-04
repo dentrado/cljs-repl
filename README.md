@@ -1,10 +1,8 @@
-# coding
+# cljs-repl
 
-An implementation of Bret Victor's neat live game editor in Clojurescript
+Just a quick hack. Based on Chris Grangers live-cljs live game editor.
 
 ## Usage
-
-**Works best in Chrome. It runs in FF, but the mouse events don't work**
 
 ```bash
 lein run
